@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using IdentityServer4;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -22,6 +18,16 @@ namespace InteractiveAspNetCoreIdentityServer
                 .AddTestUsers(TestUsers.Users);
             builder.AddDeveloperSigningCredential();
 
+            services.AddAuthentication()
+                .AddGoogle("Google", options =>
+                {
+                    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+
+                    options.ClientId = "<insert here>";
+                    options.ClientSecret = "<insert here>";
+                });
+                
+
             services.AddControllersWithViews();
         }
 
@@ -32,10 +38,11 @@ namespace InteractiveAspNetCoreIdentityServer
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
+
             app.UseRouting();
 
             app.UseIdentityServer();
-            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
