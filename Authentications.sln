@@ -55,6 +55,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptClientServer", "J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptClientApi", "JavaScriptClientApi\JavaScriptClientApi.csproj", "{56821DE9-7F80-4D1E-B5D4-E5C57A312AD4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "restfulapi", "restfulapi", "{BDF55175-0979-48B7-99B3-E0EE250A311B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Damon.Api", "Damon.Api\Damon.Api.csproj", "{F3B324E6-FF7C-459D-9228-C62A25DE5904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +141,10 @@ Global
 		{56821DE9-7F80-4D1E-B5D4-E5C57A312AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56821DE9-7F80-4D1E-B5D4-E5C57A312AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56821DE9-7F80-4D1E-B5D4-E5C57A312AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3B324E6-FF7C-459D-9228-C62A25DE5904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B324E6-FF7C-459D-9228-C62A25DE5904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B324E6-FF7C-459D-9228-C62A25DE5904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B324E6-FF7C-459D-9228-C62A25DE5904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +173,7 @@ Global
 		{E630F264-5A02-4D32-A1E9-4942AB900193} = {72218AE0-4E72-4244-A152-3565C127D2A9}
 		{F41A5CAD-8A0F-431E-92DA-BDBF2953C0DF} = {72218AE0-4E72-4244-A152-3565C127D2A9}
 		{56821DE9-7F80-4D1E-B5D4-E5C57A312AD4} = {72218AE0-4E72-4244-A152-3565C127D2A9}
+		{F3B324E6-FF7C-459D-9228-C62A25DE5904} = {BDF55175-0979-48B7-99B3-E0EE250A311B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {162FC7C8-AF05-4A0F-BF68-C7385D31DF0A}
