@@ -9,7 +9,7 @@ namespace Volo.Abp.Modularity
 {
     public interface IAbpModuleDescriptor
     {
-        // 模块
+        // 模块的具体类型
         Type Type { get; }
         // 模块所在的程序集
         Assembly Assembly { get; }

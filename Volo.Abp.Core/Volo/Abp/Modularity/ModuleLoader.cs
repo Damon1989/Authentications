@@ -8,7 +8,7 @@ using Volo.Abp.Modularity.PlugIns;
 
 namespace Volo.Abp.Modularity
 {
-    public class ModuleLoader
+    public class ModuleLoader: IModuleLoader
     {
         public IAbpModuleDescriptor[] LoadModules(
             IServiceCollection services,

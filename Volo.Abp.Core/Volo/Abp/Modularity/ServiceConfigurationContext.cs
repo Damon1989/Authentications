@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,6 +9,12 @@ namespace Volo.Abp.Modularity
         public IServiceCollection Services { get; }
         public IDictionary<string,object> Items { get; set; }
 
+        /// <summary>
+        /// Gets/sets arbitrary named objects those can be stored during
+        /// the service registration phase and shared between modules
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public object this[string key]
         {
             get => Items.GetOrDefault(key);
