@@ -8,13 +8,29 @@ using Volo.Abp;
 
 namespace System.Collections.Generic
 {
+    /// <summary>
+    /// Extension methods for Collections
+    /// </summary>
     public static class AbpCollectionExtensions
     {
+        /// <summary>
+        /// Checks whatever given collection object is null or has no item.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
         public static bool IsNullOrEmpty<T>([CanBeNull] this ICollection<T> source)
         {
             return source == null || source.Count <= 0;
         }
 
+        /// <summary>
+        ///  Adds an item to the collection if it's not already in the collection.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="item"></param>
+        /// <returns>Returns True if added,returns False if not.</returns>
         public static bool AddIfNotContains<T>([NotNull] this ICollection<T> source, T item)
         {
             Check.NotNull(source, nameof(source));
@@ -48,7 +64,9 @@ namespace System.Collections.Generic
             return addedItems;
         }
 
-        public static bool AddIfNotContains<T>([NotNull] this ICollection<T> source, [NotNull] Func<T, bool> predicate, [NotNull] Func<T> itemFactory)
+        public static bool AddIfNotContains<T>([NotNull] this ICollection<T> source, 
+                                                [NotNull] Func<T, bool> predicate, 
+                                                [NotNull] Func<T> itemFactory)
         {
             Check.NotNull(source, nameof(source));
             Check.NotNull(predicate, nameof(predicate));

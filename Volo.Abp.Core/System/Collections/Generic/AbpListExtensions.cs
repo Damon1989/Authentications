@@ -25,57 +25,57 @@ namespace System.Collections.Generic
 
         public static void AddFirst<T>(this IList<T> source, T item)
         {
-            source.Insert(0,item);
+            source.Insert(0, item);
         }
 
         public static void AddLast<T>(this IList<T> source, T item)
         {
-            source.Insert(source.Count,item);
+            source.Insert(source.Count, item);
         }
 
         public static void InsertAfter<T>(this IList<T> source, T existingItem, T item)
         {
             var index = source.IndexOf(existingItem);
-            if (index<0)
+            if (index < 0)
             {
                 source.AddFirst(item);
                 return;
             }
 
-            source.Insert(index+1,item);
+            source.Insert(index + 1, item);
         }
 
         public static void InsertAfter<T>(this IList<T> source, Predicate<T> selector, T item)
         {
             var index = source.FindIndex(selector);
-            if (index<0)
+            if (index < 0)
             {
                 source.AddFirst(item);
                 return;
             }
-            source.Insert(index+1,item);
+            source.Insert(index + 1, item);
         }
 
         public static void InsertBefore<T>(this IList<T> source, T existingItem, T item)
         {
             var index = source.IndexOf(existingItem);
-            if (index<0)
+            if (index < 0)
             {
                 source.AddLast(item);
                 return;
             }
-            source.Insert(index,item);
+            source.Insert(index, item);
         }
 
         public static void InsertBefore<T>(this IList<T> source, Predicate<T> selector, T item)
         {
             var index = source.FindIndex(selector);
-            if (index<0)
+            if (index < 0)
             {
                 source.AddLast(item);
                 return;
             }
-            source.Insert(index,item);
+            source.Insert(index, item);
         }
 
         public static void ReplaceWhile<T>(this IList<T> source, Predicate<T> selector, T item)
@@ -130,7 +130,7 @@ namespace System.Collections.Generic
         {
             for (int i = 0; i < source.Count; i++)
             {
-                if (Comparer<T>.Default.Compare(source[i],item)==0)
+                if (Comparer<T>.Default.Compare(source[i], item) == 0)
                 {
                     source[i] = replaceWith;
                     return;
@@ -140,13 +140,13 @@ namespace System.Collections.Generic
 
         public static void MoveItem<T>(this List<T> source, Predicate<T> selector, int targetIndex)
         {
-            if (!targetIndex.IsBetween(0,source.Count-1))
+            if (!targetIndex.IsBetween(0, source.Count - 1))
             {
-                throw new IndexOutOfRangeException($"targetIndex should be between 0 and {source.Count-1}");
+                throw new IndexOutOfRangeException($"targetIndex should be between 0 and {source.Count - 1}");
             }
 
             var currentIndex = source.FindIndex(0, selector);
-            if (currentIndex==targetIndex)
+            if (currentIndex == targetIndex)
             {
                 return;
             }
@@ -154,7 +154,7 @@ namespace System.Collections.Generic
 
             var item = source[currentIndex];
             source.RemoveAt(currentIndex);
-            source.Insert(targetIndex,item);
+            source.Insert(targetIndex, item);
         }
 
         [NotNull]
@@ -164,7 +164,7 @@ namespace System.Collections.Generic
 
             var item = source.FirstOrDefault(selector);
 
-            if (item==null)
+            if (item == null)
             {
                 item = factory();
                 source.Add(item);
@@ -175,12 +175,12 @@ namespace System.Collections.Generic
 
         public static List<T> SortByDependencies<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> getDependencies)
         {
-            var sorted=new List<T>();
-            var visited=new Dictionary<T,bool>();
+            var sorted = new List<T>();
+            var visited = new Dictionary<T, bool>();
 
             foreach (var item in source)
             {
-                SortByDependenciesVisit(item,getDependencies,sorted,visited);
+                SortByDependenciesVisit(item, getDependencies, sorted, visited);
             }
 
             return sorted;
@@ -202,11 +202,11 @@ namespace System.Collections.Generic
             {
                 visited[item] = true;
                 var dependencies = getDependencies(item);
-                if (dependencies!=null)
+                if (dependencies != null)
                 {
                     foreach (var dependency in dependencies)
                     {
-                        SortByDependenciesVisit<T>(dependency,getDependencies,sorted,visited);
+                        SortByDependenciesVisit<T>(dependency, getDependencies, sorted, visited);
                     }
                 }
 
@@ -214,13 +214,5 @@ namespace System.Collections.Generic
                 sorted.Add(item);
             }
         }
-
-
-
-
-
-
-
-
     }
 }

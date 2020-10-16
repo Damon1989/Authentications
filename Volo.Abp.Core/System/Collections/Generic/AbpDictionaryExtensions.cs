@@ -2,6 +2,9 @@
 
 namespace System.Collections.Generic
 {
+    /// <summary>
+    /// Extension methods for Dictionary
+    /// </summary>
     public static class AbpDictionaryExtensions
     {
         internal static bool TryGetValue<T>(this IDictionary<string, object> dictionary, string key, out T value)
