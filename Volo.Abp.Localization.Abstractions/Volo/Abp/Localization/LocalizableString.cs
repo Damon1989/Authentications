@@ -8,7 +8,7 @@ using Microsoft.Extensions.Localization;
 
 namespace Volo.Abp.Localization
 {
-    public class LocalizableString:ILocalizableString
+    public class LocalizableString
     {
         [CanBeNull]
         public Type ResourceType { get; set; }
@@ -22,10 +22,10 @@ namespace Volo.Abp.Localization
             ResourceType = resourceType;
         }
 
-        public LocalizedString Localize(IStringLocalizerFactory stringLocalizerFactory)
-        {
-            return stringLocalizerFactory.Create(ResourceType)[Name];
-        }
+        //public LocalizedString Localize(IStringLocalizerFactory stringLocalizerFactory)
+        //{
+        //    return stringLocalizerFactory.Create(ResourceType)[Name];
+        //}
 
         public static LocalizableString Create<TResource>([NotNull] string name)
         {

@@ -25,5 +25,24 @@ namespace Volo.Abp.Domain.Entities
             ExtraProperties=new Dictionary<string, object>();
         }
 
+        public IEnumerable<object> GetLocalEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> GetDistributedEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearLocalEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ClearDistributedEvents()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

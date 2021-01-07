@@ -38,13 +38,13 @@ namespace Volo.Abp.Data
             throw new AbpException("GetProperty<TProperty> dose not support non-primitive types. Use non-generic GetProperty method and handle type casting manually.");
         }
 
-        public static TSource SetProperty<TSource>(this TSource source, string name, object value, bool validate = true)
-            where TSource : IHasExtraProperties
-        {
-            if (validate)
-            {
+        //public static TSource SetProperty<TSource>(this TSource source, string name, object value, bool validate = true)
+        //    where TSource : IHasExtraProperties
+        //{
+        //    if (validate)
+        //    {
                 
-            }
-        }
+        //    }
+        //}
     }
 }

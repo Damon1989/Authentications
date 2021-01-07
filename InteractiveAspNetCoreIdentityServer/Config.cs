@@ -10,7 +10,9 @@ namespace InteractiveAspNetCoreIdentityServer
         new List<IdentityResource>()
         {
             new IdentityResources.OpenId(),
-            new IdentityResources.Profile()
+            new IdentityResources.Profile(),
+            new IdentityResources.Email(),
+            new IdentityResources.Address()
         };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -38,12 +40,14 @@ namespace InteractiveAspNetCoreIdentityServer
                     ClientSecrets = {new Secret("secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
                     // where to redirect to after login
-                    RedirectUris = {"https://localhost:5002/signin-oidc"},
-                    PostLogoutRedirectUris = {"https://localhost:5002/signout-callback-oidc"},
+                    RedirectUris = {"http://localhost:5002/signin-oidc"},
+                    PostLogoutRedirectUris = {"http://localhost:5002/signout-callback-oidc"},
                     AllowedScopes = new List<string>()
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
-                        IdentityServerConstants.StandardScopes.Profile
+                        IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
+                        IdentityServerConstants.StandardScopes.Address
                     }
                 }
             };

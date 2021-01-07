@@ -9,7 +9,8 @@ namespace ClientCredentialsIdentityServer
         public static IEnumerable<ApiScope> ApiScopes =>
         new List<ApiScope>()
         {
-            new ApiScope("api1","My API")
+            new ApiScope("api1","My API1"),
+            new ApiScope("api2","My API2")
         };
 
         public static IEnumerable<Client> Clients=>
@@ -23,7 +24,7 @@ namespace ClientCredentialsIdentityServer
                 // no interactive user, use the clientid/secret for authentication
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 // scopes that client has access to 
-                AllowedScopes = {"api1"}
+                AllowedScopes = {"api1","api2"}
             }
         };
     }

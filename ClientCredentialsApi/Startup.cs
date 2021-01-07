@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ClientCredentialsApi.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -38,10 +39,11 @@ namespace ClientCredentialsApi
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("ApiScope", policy =>
+                options.AddPolicy(PolicyConstant.ApiScope, policy =>
                 {
                     policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "api1");
+                    policy.RequireClaim("scope", "api2");
                 });
             });
         }
@@ -62,8 +64,9 @@ namespace ClientCredentialsApi
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers()
-                    .RequireAuthorization("ApiScope");
+                //endpoints.MapControllers()
+                //    .RequireAuthorization("ApiScope");
+                endpoints.MapControllers();
             });
         }
     }

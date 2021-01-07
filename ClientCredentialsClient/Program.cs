@@ -29,9 +29,12 @@ namespace ClientCredentialsClient
                 Address = disco.TokenEndpoint,
                 ClientId = "client_id",
                 ClientSecret = "secret",
+                //Scope = "api1 api2"
                 Scope = "api1"
+                //Scope = ""
             });
 
+            Console.WriteLine($"tokenResponse.IsError:{tokenResponse.IsError}");
             if (tokenResponse.IsError)
             {
                 Console.WriteLine(tokenResponse.Error);
@@ -46,7 +49,7 @@ namespace ClientCredentialsClient
             var response = await apiClient.GetAsync("http://localhost:6001/identity/info");
             if (!response.IsSuccessStatusCode)
             {
-                Console.WriteLine(response.StatusCode);
+                Console.WriteLine($"response.StatusCode:{response.StatusCode}");
             }
             else
             {
