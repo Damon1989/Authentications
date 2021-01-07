@@ -9,6 +9,7 @@ namespace ClientCredentialsApi.Controllers
     public class IdentityController : Controller
     {
         [HttpGet]
+        [Route("info")]
         public IActionResult Index()
         {
             return new JsonResult(from c in User.Claims select new {c.Type,c.Value});

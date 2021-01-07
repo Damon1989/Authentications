@@ -11,6 +11,9 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ClientCredentialsApi
 {
+    /// <summary>
+    /// dotnet ClientCredentialsApi.dll --urls="http://*:6001"
+    /// </summary>
     public class Startup
     {
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -23,7 +26,10 @@ namespace ClientCredentialsApi
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://localhost:5001";
+                    //options.Authority = "https://localhost:5001";
+                    
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidateAudience = false

@@ -6,13 +6,16 @@ using Newtonsoft.Json.Linq;
 
 namespace ClientCredentialsClient
 {
+    /// <summary>
+    /// dotnet ClientCredentialsClient.dll --urls="http://*:7001"
+    /// </summary>
     class Program
     {
         static async Task Main(string[] args)
         {
             // discover endpoints from metadata
             var client=new HttpClient();
-            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
+            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5001");
 
             if (disco.IsError)
             {
@@ -40,7 +43,7 @@ namespace ClientCredentialsClient
             var apiClient=new HttpClient();
             apiClient.SetBearerToken(tokenResponse.AccessToken);
 
-            var response = await apiClient.GetAsync("https://localhost:6001/identity");
+            var response = await apiClient.GetAsync("http://localhost:6001/identity/info");
             if (!response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.StatusCode);
