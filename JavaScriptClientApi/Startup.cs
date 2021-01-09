@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -23,12 +24,13 @@ namespace JavaScriptClientApi
             services.AddAuthentication("Bearer")
                 .AddJwtBearer("Bearer", options =>
                 {
-                    options.Authority = "https://localhost:5001";
+                    options.Authority = "http://localhost:5001";
+                    options.RequireHttpsMetadata = false;
                     options.TokenValidationParameters = new TokenValidationParameters()
                     {
                         ValidateAudience = false
                     };
-                });
+                }).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme);
 
             services.AddAuthorization(options =>
             {
@@ -39,12 +41,16 @@ namespace JavaScriptClientApi
                 });
             });
 
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.MinimumSameSitePolicy = SameSiteMode.Lax;
+            });
 
             services.AddCors(options =>
             {
                 options.AddPolicy("default", policy =>
                 {
-                    policy.WithOrigins("https://localhost:5003")
+                    policy.WithOrigins("http://localhost:5003")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
@@ -60,7 +66,7 @@ namespace JavaScriptClientApi
             }
 
             app.UseRouting();
-
+            app.UseCookiePolicy();
             app.UseCors("default");
 
             app.UseAuthentication();

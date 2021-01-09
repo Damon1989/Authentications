@@ -18,7 +18,8 @@ namespace JavaScriptClientServer
             if (env.IsDevelopment()) app.UseDeveloperExceptionPage();
 
             app.UseStaticFiles();
-
+            app.UseCookiePolicy();
+            app.UseCors("default");
             app.UseRouting();
 
             app.UseIdentityServer();
@@ -37,6 +38,19 @@ namespace JavaScriptClientServer
 
 
             services.AddControllersWithViews();
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.Lax;
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("default", policy =>
+                {
+                    policy.WithOrigins("http://localhost:5003")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
         }
     }
 }

@@ -18,16 +18,18 @@ document.getElementById("logout").addEventListener("click", logout, false);
 
 
 var config = {
-    authority: "https://localhost:5001",
+    authority: "http://localhost:5001",
     client_id: "js",
-    redirect_uri: "https://localhost:5003/callback.html",
+    redirect_uri: "http://localhost:5003/callback.html",
     response_type: "code",
-    scope: "openid profile api1",
-    post_logout_redirect_uri: "https://localhost:5003/index.html",
+    scope: "openid profile api1 email",
+    post_logout_redirect_uri: "http://localhost:5003/index.html",
 };
 var mgr = new Oidc.UserManager(config);
 
 mgr.getUser().then(function (user) {
+    console.log(user);
+
     if (user) {
         log("User logged in", user.profile);
     }
@@ -42,7 +44,7 @@ function login() {
 
 function api() {
     mgr.getUser().then(function (user) {
-        var url = "https://localhost:6001/identity";
+        var url = "http://localhost:6001/identity";
 
         var xhr = new XMLHttpRequest();
         xhr.open("GET", url);

@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Text.Json;
 using IdentityServer4;
+using IdentityServer4.Models;
+using Microsoft.VisualBasic;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -40,7 +42,9 @@ namespace IdentityServerHost.Quickstart.UI
                             new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
                             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                             new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json),
+                            new Claim("damon","dd"),
+                            new Claim("home","dong tai")
                         }
                     },
                     new TestUser
@@ -56,11 +60,28 @@ namespace IdentityServerHost.Quickstart.UI
                             new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
                             new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
                             new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                            new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json),
+                            new Claim("damon","xx"),
+                            new Claim("home","shang hai")
                         }
                     }
                 };
             }
+        }
+    }
+
+    public class Damon : IdentityResource
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:IdentityServer4.Models.IdentityResources.Address" /> class.
+        /// </summary>
+        public Damon()
+        {
+            this.Name = "damon";
+            this.DisplayName = "damonName";
+            this.Emphasize = true;
+            this.UserClaims.Add("damon");
+            this.UserClaims.Add("home");
         }
     }
 }

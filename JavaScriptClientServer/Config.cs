@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IdentityModel;
 using IdentityServer4;
 using IdentityServer4.Models;
 
@@ -10,7 +11,8 @@ namespace JavaScriptClientServer
         new List<IdentityResource>()
         {
             new IdentityResources.OpenId(),
-            new IdentityResources.Profile()
+            new IdentityResources.Profile(),
+            new IdentityResources.Email()
         };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -54,14 +56,15 @@ namespace JavaScriptClientServer
                     ClientName = "JavaScript Client",
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
-                    RedirectUris = {"https://localhost:5003/callback.html"},
-                    PostLogoutRedirectUris = {"https://localhost:5003/index.html"},
-                    AllowedCorsOrigins = {"https://localhost:5003"},
+                    RedirectUris = {"http://localhost:5003/callback.html"},
+                    PostLogoutRedirectUris = {"http://localhost:5003/index.html"},
+                    AllowedCorsOrigins = {"http://localhost:5003"},
 
                     AllowedScopes =
                     {
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
+                        IdentityServerConstants.StandardScopes.Email,
                         "api1"
                     }
                 }

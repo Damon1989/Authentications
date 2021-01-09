@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using IdentityServer4;
 using IdentityServer4.Models;
+using IdentityServerHost.Quickstart.UI;
 
 namespace InteractiveAspNetCoreIdentityServer
 {
@@ -12,7 +13,8 @@ namespace InteractiveAspNetCoreIdentityServer
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
             new IdentityResources.Email(),
-            new IdentityResources.Address()
+            new IdentityResources.Address(),
+            new Damon()
         };
 
         public static IEnumerable<ApiScope> ApiScopes =>
@@ -40,14 +42,22 @@ namespace InteractiveAspNetCoreIdentityServer
                     ClientSecrets = {new Secret("secret".Sha256())},
                     AllowedGrantTypes = GrantTypes.Code,
                     // where to redirect to after login
+                    // 返回 authorization code 给客户端
                     RedirectUris = {"http://localhost:5002/signin-oidc"},
+
+                    // where to redirect to after logout
                     PostLogoutRedirectUris = {"http://localhost:5002/signout-callback-oidc"},
+
+                    AllowOfflineAccess = true,
+
                     AllowedScopes = new List<string>()
                     {
+                        "api1",
                         IdentityServerConstants.StandardScopes.OpenId,
                         IdentityServerConstants.StandardScopes.Profile,
                         IdentityServerConstants.StandardScopes.Email,
-                        IdentityServerConstants.StandardScopes.Address
+                        IdentityServerConstants.StandardScopes.Address,
+                        "damon"
                     }
                 }
             };
