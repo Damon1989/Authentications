@@ -1,0 +1,79 @@
+{
+  "GlobalConfiguration": { "BaseUrl": "http://localhost:9001" },
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/ocelot/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9002
+        },
+        {
+          "Host": "localhost",
+          "Port": 9003
+        },
+        {
+          "Host": "localhost",
+          "Port": 9004
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/{id}",
+      "UpstreamHttpMethod": [ "Get" ],
+      "LoadBalancerOptions": {"Type": "RoundRobin" }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ocelot/aggrdamon",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9002
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/aggrdamon",
+      "UpstreamHttpMethod": [ "Get" ],
+      "key": "aggr_damon",
+      "Priority": 2
+    },
+    {
+      "DownstreamPathTemplate": "/api/ocelot/aggrdd",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9002
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/aggrdd",
+      "UpstreamHttpMethod": [ "Get" ],
+      "key": "aggr_dd",
+      "Priority": 2
+    },
+    {
+      "DownstreamPathTemplate": "/api/ocelot/aggrerr",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 9002
+        }
+      ],
+      "UpstreamPathTemplate": "/ocelot/aggrerr",
+      "UpstreamHttpMethod": [ "Get" ],
+      "key": "aggr_err",
+      "Priority": 2
+    }
+  ],
+  "Aggregates": [
+    {
+      "RouteKeys": [
+        "aggr_damon",
+        "aggr_dd",
+        "aggr_err"
+      ],
+      "UpstreamPathTemplate": "/aggrInfo",
+      "Aggregator": "LeaderInfoAdvancedAggregator"
+    }
+  ] 
+}
