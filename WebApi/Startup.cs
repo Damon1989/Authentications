@@ -47,7 +47,7 @@ namespace WebApi
 
             #region Consul注册
             //站点启动完成 执行且只执行一次
-            Configuration.ConsulRegister();
+            //Configuration.ConsulRegister();
 
             #endregion
         }

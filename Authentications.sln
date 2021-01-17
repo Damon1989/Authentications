@@ -96,11 +96,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "studyTest", "studyTest", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestDemo", "TestDemo\TestDemo.csproj", "{70D3A2CD-56A3-4844-9F3B-207625F13106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotConsul", "OcelotConsul\OcelotConsul.csproj", "{8DE0DCCD-B5AB-4644-807C-59948056986C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotConsul", "OcelotConsul\OcelotConsul.csproj", "{8DE0DCCD-B5AB-4644-807C-59948056986C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotIdentityServer4", "OcelotIdentityServer4\OcelotIdentityServer4.csproj", "{1E822EE3-18A2-43ED-AD1C-F752BF712EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotIdentityServer4", "OcelotIdentityServer4\OcelotIdentityServer4.csproj", "{1E822EE3-18A2-43ED-AD1C-F752BF712EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OcelotIdentityServer4Client", "OcelotIdentityServer4Client\OcelotIdentityServer4Client.csproj", "{6C3665E2-CA6C-4F94-A9ED-AAF9688F84C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OcelotIdentityServer4Client", "OcelotIdentityServer4Client\OcelotIdentityServer4Client.csproj", "{6C3665E2-CA6C-4F94-A9ED-AAF9688F84C4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hybrid", "Hybrid", "{64136E88-42FF-4D5E-A7A1-CAA0477592F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridClient", "HybridClient\HybridClient.csproj", "{F4684F58-F224-475A-A3B5-838D1EC52EC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -248,6 +252,10 @@ Global
 		{6C3665E2-CA6C-4F94-A9ED-AAF9688F84C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C3665E2-CA6C-4F94-A9ED-AAF9688F84C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C3665E2-CA6C-4F94-A9ED-AAF9688F84C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4684F58-F224-475A-A3B5-838D1EC52EC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4684F58-F224-475A-A3B5-838D1EC52EC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4684F58-F224-475A-A3B5-838D1EC52EC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4684F58-F224-475A-A3B5-838D1EC52EC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -293,6 +301,8 @@ Global
 		{8DE0DCCD-B5AB-4644-807C-59948056986C} = {DA0C1543-4AEA-4A9C-844C-AF5E6930D337}
 		{1E822EE3-18A2-43ED-AD1C-F752BF712EF0} = {DA0C1543-4AEA-4A9C-844C-AF5E6930D337}
 		{6C3665E2-CA6C-4F94-A9ED-AAF9688F84C4} = {DA0C1543-4AEA-4A9C-844C-AF5E6930D337}
+		{64136E88-42FF-4D5E-A7A1-CAA0477592F7} = {D489D1C2-8C15-4CA3-AC94-DAE26649791D}
+		{F4684F58-F224-475A-A3B5-838D1EC52EC7} = {64136E88-42FF-4D5E-A7A1-CAA0477592F7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {162FC7C8-AF05-4A0F-BF68-C7385D31DF0A}
