@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AutofacDemo.IRepository\AutofacDemo.IRepository.csproj" />
+    <ProjectReference Include="..\AutofacDemo.Model\AutofacDemo.Model.csproj" />
+  </ItemGroup>
+
+</Project>
